@@ -53,7 +53,7 @@
         },
         "/api/books/{id}": {
             "get": {
-                "summary": "Get a book by id",
+                "summary": "Get a book by ID",
                 "operationId": "2fdd668eb661591758aff4c56ca9b66a",
                 "parameters": [
                     {

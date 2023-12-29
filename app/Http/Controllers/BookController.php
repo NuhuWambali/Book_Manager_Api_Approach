@@ -52,7 +52,7 @@ class BookController extends Controller
         /**
  * @OA\Get(
  *     path="/api/books/{id}",
- *     summary="Get a book by id",
+ *     summary="Get a book by ID",
  *  @OA\Parameter(
  *         name="id",
  *         in="path",
@@ -92,19 +92,18 @@ class BookController extends Controller
  * )
  */
 
-    public function update(Request $request,$id){
-        if(Books::where('id',$id)->exists()){
-            $book=Books::find($id);
-            $book->name=$request->name;
-            $book->author=$request->author;
-            $book->published_at=now();
-            $book->save();
-            return response()->json(["Book Updated Successfully"],401);
-        }
-        else{
-            return response()->json(["Book not found"], 404);
-        }
+ public function update(Request $request, $id) {
+    if (Books::where('id', $id)->exists()) {
+         $book = Books::find($id);
+         $book->name=$request->name;
+         $book->author=$request->author;
+         $book->published_at=$request->published_at;
+        $book->save();
+        return response()->json(["Message"=>"Book Updated Successfully","status"=>"Success"], 200);
+    } else {
+        return response()->json(["Message"=>"Book not found","Status"=>"Success"], 404);
     }
+}
 
 
     /**
